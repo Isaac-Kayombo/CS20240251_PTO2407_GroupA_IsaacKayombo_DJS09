@@ -24,3 +24,11 @@ const reviews = [
     date: "27-03-2021",
   },
 ];
+
+
+// FUNCTION THAT SHOWS TOTAL NUMBER OF REVIEWS
+function showReviewTotal(value: number) {
+  reviewTotalDisplay.innerHTML = 'Review total ' + value.toString()
+}
+
+showReviewTotal(reviews.length)
