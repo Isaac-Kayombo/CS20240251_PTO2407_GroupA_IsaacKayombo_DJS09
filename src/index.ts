@@ -3,7 +3,7 @@ import { Permissions, LoyaltyUser } from "./enums";
 const propertyContainer = document.querySelector('.properties')
 const footer = document.querySelector('.footer')
 
-let isOpen: boolean
+let isLoggedIn: boolean
 
 // REVIEWS
 const reviews: any[] = [
@@ -32,6 +32,7 @@ const reviews: any[] = [
 const you = {
   firstName: 'Bobby',
   lastName: 'Brown',
+  permissions: Permissions.ADMIN,
   isReturning: true,
   age: 35,
   stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
@@ -94,10 +95,19 @@ const properties : {
 
 // FUNCTIONS
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
-
 populateUser(you.isReturning, you.firstName)
 
+let authorityStatus : any
 
+isLoggedIn = false
+
+function showDetails(authorityStatus: boolean | Permissions, element : HTMLDivElement, price: number) {
+   if (authorityStatus) {
+       const priceDisplay = document.createElement('div')
+       priceDisplay.innerHTML = price.toString() + '/night'
+       element.appendChild(priceDisplay)
+   }
+}
 
 // ADDING THE PROPERTIES
 for (let i = 0; i < properties.length; i++) {
@@ -108,6 +118,7 @@ for (let i = 0; i < properties.length; i++) {
   image.setAttribute('src', properties[i].image)
   card.appendChild(image)
   propertyContainer.appendChild(card)
+  showDetails(you.permissions, card, properties[i].price)
 }
 
 // LOCATION
