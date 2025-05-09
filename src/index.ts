@@ -1,9 +1,9 @@
 import { showReviewTotal, populateUser } from "./utils";
-let isOpen: boolean
-
+import { Permissions } from "./enums";
 const propertyContainer = document.querySelector('.properties')
 const footer = document.querySelector('.footer')
 
+let isOpen: boolean
 
 // REVIEWS
 const reviews: {
