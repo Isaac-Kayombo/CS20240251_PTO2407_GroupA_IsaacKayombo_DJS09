@@ -1,6 +1,7 @@
 import { showReviewTotal, populateUser, showDetails, getTopTwoReviews} from './utils'
+import { Permissions , LoyaltyUser } from './enums'
 import { Price, Country} from './types'
-import { Review } from './interfaces'
+import  Review  from './interfaces'
 const propertyContainer = document.querySelector('.properties')
 const reviewContainer = document.querySelector('.reviews')
 const container = document.querySelector('.container')
@@ -8,17 +9,6 @@ const button = document.querySelector('button')
 const footer = document.querySelector('.footer')
 
 let isLoggedIn: boolean
-
-enum Permissions {
-    ADMIN = 'ADMIN', 
-    READ_ONLY = 'READ_ONLY'
-}
-
-enum LoyaltyUser {
-    GOLD_USER = 'GOLD_USER',
-    SILVER_USER = 'SILVER_USER',
-    BRONZE_USER = 'BRONZE_USER'
-}
 
 // Reviews
 const reviews: Review[] = [
@@ -142,3 +132,16 @@ button.addEventListener('click', () => addReviews(reviews))
 
 let currentLocation : [string, string, number] = ['London', '11.03', 17]
 footer.innerHTML = currentLocation[0] + ' ' + currentLocation[1] + ' ' + currentLocation[2] + '°'
+
+
+// Classes
+class MainProperty {
+  src: string
+  title: string
+  reviews: Review[]
+  constructor(src: string, title: string, reviews: Review[]) {
+      this.src = src
+      this.title = title
+      this.reviews = reviews
+  }
+}
