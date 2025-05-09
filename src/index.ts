@@ -44,11 +44,13 @@ const you: {
   lastName: string;
   isReturning: boolean;
   age: number;
+  stayedAt: string[];
 } = {
   firstName: 'Bobby',
   lastName: 'Brown',
   isReturning: true,
-  age: 35
+  age: 35,
+  stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 }
 
 function populateUser(isReturning: boolean, userName: string ) {
